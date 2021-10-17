@@ -1,6 +1,7 @@
 // Import Libraries
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import ReactCSSTransitionGroup from "react-transition-group";
 
 // Import JSON
 import { WorkData } from "assets/json";
@@ -9,31 +10,35 @@ import { WorkData } from "assets/json";
 import "./Main.page.scss";
 
 export const Main = () => {
-  const [hoverBtnThumbnail, setHoverBtn] = useState<undefined | string[]>();
+  const [hoverIndex, setHoverIndex] = useState<number>(0);
+  const [isHover, setHover] = useState(false);
 
   const WorkList = () => {
     return (
-      <div className="flex-1">
+      <div className="work-list">
         {WorkData.map((value, index) => {
           return (
             <div key={index}>
-              <div className="inline-block">
+              <div className="title-ko">
                 <Link
                   to={{
                     pathname: "/work",
                     state: index,
                   }}
-                  onMouseEnter={() =>
-                    setHoverBtn([value.thumbnail, value.name[0]])
-                  }
-                  onMouseLeave={() => setHoverBtn(undefined)}
-                  className="font-bold text-8xl float-left mr-3 mb-4 underline hover:text-shadow"
+                  onMouseEnter={() => {
+                    setHover(true);
+                    setHoverIndex(index);
+                  }}
+                  onMouseLeave={() => {
+                    setHover(false);
+                    setTimeout(() => setHoverIndex(0), 500);
+                  }}
                 >
                   <h2>{value.name[0]}</h2>
                 </Link>
-                <p className="font-medium text-4xl float-right">0{value.id}</p>
+                <p className="index">0{value.id}</p>
               </div>
-              <p className="font-medium text-4xl">{value.name[1]}</p>
+              <p className="title-en">{value.name[1]}</p>
             </div>
           );
         })}
@@ -43,14 +48,19 @@ export const Main = () => {
 
   const WorkThumbnail = () => {
     return (
-      <div className="">
-        {hoverBtnThumbnail === undefined ? null : (
+      <div className="image">
+        <ReactCSSTransitionGroup
+          transitionName="example"
+          transitionEnterTimeout={500}
+          transitionLeaveTimeout={300}
+        >
           <img
-            className="max-w-3xl float-right"
-            src={hoverBtnThumbnail[0]}
-            alt={hoverBtnThumbnail[1]}
+            style={isHover ? { opacity: 1 } : { opacity: 0 }}
+            src={WorkData[hoverIndex].thumbnail}
+            alt={hoverIndex?.toString()}
+            key={hoverIndex?.toString()}
           />
-        )}
+        </ReactCSSTransitionGroup>
       </div>
     );
   };

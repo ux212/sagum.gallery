@@ -8,9 +8,19 @@ html {
   margin: 8rem;
 }
 
-a {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+a,
+button {
   all: unset;
-  &:hover {
-    cursor: pointer;
-  }
+}
+
+a,
+button:hover {
+  cursor: pointer;
 }

@@ -10,7 +10,16 @@ export interface WorkProp {
   thumbnails?: string;
   script: string[];
   titleImg?: string;
-  works:
-    | { name: string; img: string; form: string }[]
-    | { name: string; ytLink: string }[];
+  works: {
+    name: string;
+    img?: string;
+    video?: string;
+    form?: string;
+    ytLink?: string;
+  }[];
+}
+
+export interface ThumbnailProp {
+  src: string;
+  alt: string;
 }
