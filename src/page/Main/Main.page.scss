@@ -37,9 +37,16 @@
 
 .image {
   flex: 1 1 0%;
+  .img-fade-enter {
+    opacity: 0;
+    transition: opacity 300ms;
+  }
+  .img-fade-enter-active {
+    opacity: 1;
+    transition: opacity 300ms;
+  }
   img {
     float: right;
     max-width: 42rem;
-    transition: opacity 500ms;
   }
 }

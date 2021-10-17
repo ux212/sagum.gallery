@@ -1,7 +1,7 @@
 // Import Libraries
 import { useState } from "react";
 import { Link } from "react-router-dom";
-import CSSTransitionGroup from "react-transition-group/CSSTransitionGroup";
+import { CSSTransitionGroup } from "react-transition-group";
 
 // Import JSON
 import { WorkData } from "assets/json";
@@ -10,8 +10,7 @@ import { WorkData } from "assets/json";
 import "./Main.page.scss";
 
 export const Main = () => {
-  const [hoverIndex, setHoverIndex] = useState(0);
-  const [isHover, setHover] = useState(false);
+  const [hoverThumb, setHoverThumb] = useState(0);
 
   const WorkList = () => {
     return (
@@ -26,12 +25,10 @@ export const Main = () => {
                     state: index,
                   }}
                   onMouseEnter={() => {
-                    setHover(true);
-                    setHoverIndex(index);
+                    setHoverThumb([value.thumbnail, value.id[0]]);
                   }}
                   onMouseLeave={() => {
-                    setHover(false);
-                    setTimeout(() => setHoverIndex(0), 500);
+                    setTimeout(() => setHoverThumb(0), 300);
                   }}
                 >
                   <h2>{value.name[0]}</h2>
@@ -49,18 +46,7 @@ export const Main = () => {
   const WorkThumbnail = () => {
     return (
       <div className="image">
-        <CSSTransitionGroup
-          transitionName="example"
-          transitionEnterTimeout={500}
-          transitionLeaveTimeout={300}
-        >
-          <img
-            style={isHover ? { opacity: 1 } : { opacity: 0 }}
-            src={WorkData[hoverIndex].thumbnail}
-            alt={hoverIndex?.toString()}
-            key={hoverIndex?.toString()}
-          />
-        </CSSTransitionGroup>
+        <img src={hoverThumb[0]} alt={hoverThumb[1]} />
       </div>
     );
   };
