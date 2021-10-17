@@ -1,4 +1,4 @@
-// Import JSON Files
+// Import JSON
 import { WorkData } from "assets/json";
 
 // Import SCSS
@@ -118,7 +118,7 @@ export const Work = ({ location }) => {
                   {value.video === undefined ? (
                     <img src={value.img} alt={value.name} />
                   ) : (
-                    <video src={value.video} autoPlay loop />
+                    <video src={value.video} autoPlay playsInline loop />
                   )}
                   <div className="work-explanation">
                     <p className="work-name">{value.name}</p>

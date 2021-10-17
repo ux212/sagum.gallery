@@ -24,3 +24,11 @@ a,
 button:hover {
   cursor: pointer;
 }
+
+@media screen and (max-width: 480px) {
+  html {
+    font-size: 5px;
+    margin: 2rem;
+    max-height: 100vh;
+  }
+}

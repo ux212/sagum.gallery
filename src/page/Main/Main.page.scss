@@ -50,3 +50,9 @@
     max-width: 42rem;
   }
 }
+
+@media screen and (max-width: 480px) {
+  .image {
+    display: none;
+  }
+}

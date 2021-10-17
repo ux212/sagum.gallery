@@ -4,3 +4,11 @@
     filter: drop-shadow(0rem 0.3rem 1.5rem #fff);
   }
 }
+
+@media screen and (max-width: 480px) {
+  .header-icon {
+    img {
+      max-width: 6rem;
+    }
+  }
+}
