@@ -9,7 +9,7 @@ import burger_icon from "assets/Burger.svg";
 // Import SCSS
 import "./Header.component.scss";
 
-export const Header: React.FC = () => {
+export const Header = () => {
   const [isMain, setMain] = useState(false);
   const location = useLocation();
 

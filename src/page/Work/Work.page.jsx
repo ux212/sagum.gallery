@@ -1,13 +1,10 @@
 // Import JSON Files
 import { WorkData } from "assets/json";
 
-// Import Types
-import { LocProp, WorkProp } from "Types";
-
 // Import SCSS
 import "./Work.page.scss";
 
-export const Work: React.FC<LocProp> = ({ location }) => {
+export const Work = ({ location }) => {
   let dataNum;
 
   if (location.state === undefined) {
@@ -16,7 +13,7 @@ export const Work: React.FC<LocProp> = ({ location }) => {
     dataNum = location.state;
   }
 
-  const selData: WorkProp = WorkData[dataNum];
+  const selData = WorkData[dataNum];
 
   const Title = () => {
     const TopScript = () => {

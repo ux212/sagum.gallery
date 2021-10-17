@@ -1,7 +1,7 @@
 // Import Libraries
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
-import ReactCSSTransitionGroup from "react-transition-group";
+import CSSTransitionGroup from "react-transition-group/CSSTransitionGroup";
 
 // Import JSON
 import { WorkData } from "assets/json";
@@ -10,7 +10,7 @@ import { WorkData } from "assets/json";
 import "./Main.page.scss";
 
 export const Main = () => {
-  const [hoverIndex, setHoverIndex] = useState<number>(0);
+  const [hoverIndex, setHoverIndex] = useState(0);
   const [isHover, setHover] = useState(false);
 
   const WorkList = () => {
@@ -49,7 +49,7 @@ export const Main = () => {
   const WorkThumbnail = () => {
     return (
       <div className="image">
-        <ReactCSSTransitionGroup
+        <CSSTransitionGroup
           transitionName="example"
           transitionEnterTimeout={500}
           transitionLeaveTimeout={300}
@@ -60,7 +60,7 @@ export const Main = () => {
             alt={hoverIndex?.toString()}
             key={hoverIndex?.toString()}
           />
-        </ReactCSSTransitionGroup>
+        </CSSTransitionGroup>
       </div>
     );
   };
