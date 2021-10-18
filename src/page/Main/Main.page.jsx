@@ -25,8 +25,12 @@ export const Main = () => {
                   }}
                   onMouseEnter={() => {
                     setHoverThumb([value.thumbnail, value.id[0]]);
+                    setTimeout(() => {
+                      document.querySelector(".image").style.opacity = 1;
+                    }, 2);
                   }}
                   onMouseLeave={() => {
+                    document.querySelector(".image").style.opacity = 0;
                     setTimeout(() => setHoverThumb(0), 300);
                   }}
                 >
