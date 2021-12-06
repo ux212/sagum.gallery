@@ -18,4 +18,4 @@
 페이지 코드의 저작권은 사금과 UX Partner 212에게 있습니다.
 
 ©2021, Sagum all right reserved.
-©2021, UX Partner 212 Co.
+©2021, UX Partner 212.
